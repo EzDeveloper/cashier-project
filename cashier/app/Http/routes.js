@@ -21,5 +21,5 @@ Route.on('/').render('welcome')
 
 Route.get('/items', 'ItemsController.index')
 Route.get('/items/create', 'ItemsController.create')
-//Route.post('/items', 'ItemsController.store')
+Route.post('/items', 'ItemsController.store')
 
