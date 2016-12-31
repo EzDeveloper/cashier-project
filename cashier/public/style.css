@@ -114,16 +114,24 @@ body {
 }
 
 .createButton {
+  padding-top: 20px;
   margin-bottom:40px;
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 5px solid white;
+    background-color: #b3b3ff;
     border-collapse: collapse;
+
 }
 th, td {
-    padding: 5px;
+    padding: 10px 20px;
+    font-size: 25px;
+    color: white;
 }
 th {
     text-align: left;
+    font-size: 20px;
+    font-family: verdana;
+
 }
