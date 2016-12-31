@@ -18,16 +18,15 @@ class ItemsController {
 	* store (request, response) {
 		const itemData = request.only('item_name','item_number','item_price')
 		
-		//sih gagal masukin custom date? yg masuk otomastis 
-		//iem.created_at = new Date().getDate()
+		//msih gagal masukin custom date? yg masuk otomastis 
+		//item.created_at = new Date().getDate()
 		
 		//cara validate, jgn lupa import Validatorny kalo untuk pertama kali
-		//rule bisa disetel di modelny
-		
+		//rule bisa disetel di modelny	
 		const validation = yield Validator.validate(itemData, Item.rules)
 
 		
-		/* kalo ingin custom message 
+		/* Custom Message
 		const messages = {
   			required: 'This field is required to complete the registration process.'
 		}
@@ -45,6 +44,7 @@ class ItemsController {
 				.andWith({ errors: validation.messages() })
 				.flash()
 
+			//redirect ke create page
 			response.redirect('items/create')
 			return
 		}

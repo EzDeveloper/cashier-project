@@ -1,27 +1,37 @@
 {% extends 'master' %}
 
 {% block content %}
+
 	<div class="container">
-   		<div class="items-wrapper">
-    		{% for item in items %} 
+      <div class="createButton">
+        <a href="/items/create" class="buttonCreate">Create</a>
+      </div>
 
-      			<div class="item">
-        			<p>
-        				{{ item.item_name }} 
-       					{{ item.item_number }}
-       					{{ item.item_price }} 
-       				</p>
-      			</div>
+   	  <div class="itemDisplay">
+        <table>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>number</th>
+            <th>price</ht>
+          </tr>
+    		  {% for item in items %} 
 
-    		{% else %}
+      			  <tr>
 
-    			<h2> No items found </h2>
-          <br>
+                <td>  {{ item.item_id}} </td>
+        				<td>  {{ item.item_name }} </td>
+       					<td>  {{ item.item_number }} </td>
+       					<td>  {{ item.item_price }} </td>
+              <tr>
 
-    		{% endfor %}
+    		  {% else %}
 
-          <a href="/items/create" class="buttonCreate">Create</a>
+    			  <h2> No items found </h2>
+            <br>
 
+    		  {% endfor %}
+        </table>
   		</div>
 	</div>
 
