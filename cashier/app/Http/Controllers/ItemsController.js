@@ -62,7 +62,7 @@ class ItemsController {
 	}
 
 	* show (request, response) {
-		const item = yield Item.query().where('item_id', request.param('item_id')).fetch()
+		const item = yield Item.findBy('item_id', request.param('item_id'))
 		yield response.sendView('showItem', { item:item.toJSON() })
 		//response.json(item)
 	}
