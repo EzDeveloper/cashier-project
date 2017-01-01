@@ -58,7 +58,13 @@ class ItemsController {
     	yield Item.create(itemData)
 
     	yield response.sendView('createItem', { registerMessage:registerMessage.succes})
-    	return 
+
+	}
+
+	* show (request, response) {
+		const item = yield Item.query().where('item_id', request.param('item_id')).fetch()
+		yield response.sendView('showItem', { item:item.toJSON() })
+		//response.json(item)
 	}
 }
 

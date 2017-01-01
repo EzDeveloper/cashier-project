@@ -1,0 +1,30 @@
+{% extends 'master' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+
+                <div class="panel-heading"><h2>Item {{ item.item_name }}</h2></div>
+                    <div> 
+                      <ul >
+                        <li><a href="/items">| Back |</a></li>
+                        <li><a href="/items">| Update |</a></li>
+                        <li><a href="/items">| Delete |</a></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p>{{ item.item_id }}</p>
+                      <p>{{ item.item_name }}</p>
+                      <p>{{ item.item_number }}</p>
+                      <p>{{ item.item_price }}</p>
+                    <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
