@@ -19,8 +19,10 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.get('/items', 'ItemsController.index')
-Route.get('/items/create', 'ItemsController.create')
-Route.post('/items', 'ItemsController.store')
-Route.get('/items/:item_id', 'ItemsController.show')
+Route.resource('items','ItemsController')
+// Route.get('/items', 'ItemsController.index')
+// Route.get('/items/create', 'ItemsController.create')
+// Route.post('/items', 'ItemsController.store')
+// Route.get('/items/:item_id', 'ItemsController.show')
+// Route.put('/items/:item_id/edit','ItemsController.edit')
 

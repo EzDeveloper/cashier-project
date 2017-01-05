@@ -1,0 +1,71 @@
+{% extends 'master' %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Update Item</div>
+                  
+                  {% if old('errors') %}
+                    <div class="alert alert-danger">
+                      {% for error in old('errors') %}
+                        <li> {{ error.message }} </li>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  <div class="panel-body">
+
+                    {{ form.open({action: 'ItemsController.update', params: {id:item.item_id} }) }}
+
+                   
+                      {{ csrfField }}
+
+                      <div>
+                        <h2> {{registerMessage}}</h2>
+                      </div>
+                      
+                      <div>
+                        {{ form.label('Nama Barang') }}
+                      </div>
+                   
+                    
+                      <div>
+                        {{ form.text('item_name') }}
+                      </div>
+
+                      <div>
+                        {{ form.label('Nomor Barang') }}
+                      </div>                    
+                                  
+                      <div>
+                        {{ form.text('item_number') }}                       
+                      </div>
+
+                   
+                      <div>
+                        {{ form.label('Harga Barang') }}
+                      </div>
+                   
+
+                      <div>
+                        {{ form.text('item_price') }}
+                      </div>
+
+                      <div>
+                        {{ form.submit('Update Item') }}
+                      </div>
+
+                    {{ form.close() }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

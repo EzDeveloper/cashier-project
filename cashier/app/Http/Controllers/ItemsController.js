@@ -62,9 +62,55 @@ class ItemsController {
 	}
 
 	* show (request, response) {
-		const item = yield Item.findBy('item_id', request.param('item_id'))
+		const item = yield Item.findBy('item_id', request.param('id'))
 		yield response.sendView('showItem', { item:item.toJSON() })
 		//response.json(item)
+	}
+
+	* edit(request, response) {
+		const item = yield Item.findBy('item_id', request.param('id'))
+		yield response.sendView('editItem', { item:item.toJSON() })
+	}
+
+	* update(request, response) {
+		const item = yield Item.findBy('item_id', request.param('id'))
+
+		//to cek validation of data
+		const itemData = request.only('item_name','item_number','item_price')
+
+		//Data update
+		item.item_name = request.input('item_name')
+		item.item_number = request.input('item_number')
+		item.item_price =request.input('item_price')
+
+		const validation = yield Validator.validate(itemData, Item.rules)
+		if (validation.fails()) {
+			
+			yield request
+				.withOnly('item_name','item_number','item_price')
+				.andWith({ errors: validation.messages() })
+				.flash()
+
+			//redirect to update view 
+			response.redirect('items/:item_id/editItem')
+			return
+		}
+
+		var registerMessage = {
+    		succes: 'Item Update Succesfully'
+    	}
+
+    	//Data is updated
+    	yield item.save()
+
+    	yield response.sendView('editItem', { registerMessage:registerMessage.succes})
+
+	}
+
+	* destroy(request, response) {
+		const item = yield Item.findBy('item_id', request.param('id'))
+		yield item.delete();
+		yield response.sendView('items')
 	}
 }
 

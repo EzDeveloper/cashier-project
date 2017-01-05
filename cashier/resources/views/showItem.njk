@@ -9,10 +9,10 @@
 
                 <div class="panel-heading"><h2>Item {{ item.item_name }}</h2></div>
                     <div> 
-                      <ul >
+                      <ul>
                         <li><a href="/items">| Back |</a></li>
-                        <li><a href="/items">| Update |</a></li>
-                        <li><a href="/items">| Delete |</a></li>
+                        <li><a href="/items/{{ item.item_id }}/edit">| Update |</a></li>
+                        <li><a href="/items/{{ item.item_id }}">| Delete |</a></li>
                       </ul>
                     </div>
                     <div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </ div>
 </div>
 
 {% endblock %}
